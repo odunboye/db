@@ -1,0 +1,33 @@
+package db
+version = 0.3.0
+authors = "Odun Adeboye"
+license = "MIT"
+brief   = "A derivable active-record/query-builder layer for postgres (Row<->record mapping, derived CRUD, a typed query builder) - postgres itself stays a primitive wire-protocol client only"
+readme  = "README.md"
+homepage = "https://github.com/odunboye/db"
+sourceloc = "https://github.com/odunboye/db"
+bugtracker = "https://github.com/odunboye/db/issues"
+
+-- packages to add to search path
+depends = postgres
+        , elab-util
+        , json-simple
+
+-- modules to install
+modules = DB.Migration
+        , DB.Field
+        , DB.Row
+        , DB.Table
+        , DB.ColumnType
+        , DB.Query
+        , DB.Derive.ActiveRecord
+        , DB.Crud
+        , DB.Repository
+        , DB.ObjectFromJSON
+-- this is a library, not a standalone executable - no single module
+-- among the above is a natural "load at REPL" entry point (unlike
+-- before, when Flux.DB.PG served that role; see flux-db-flux, which took
+-- it with the module itself)
+-- main =
+
+sourcedir = "src"

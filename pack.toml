@@ -1,0 +1,15 @@
+[custom.all.db]
+type = "local"
+path = "."
+ipkg = "db.ipkg"
+test = "test/test.ipkg"
+
+[custom.all.db-test]
+type = "local"
+path = "test"
+ipkg = "test.ipkg"
+
+[custom.all.postgres]
+type = "local"
+path = "../postgres"
+ipkg = "postgres.ipkg"

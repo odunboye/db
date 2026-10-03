@@ -1,0 +1,15 @@
+package db-test
+version = 0.1.0
+authors = "Odun Adeboye"
+
+-- packages to add to search path
+depends = db
+        , postgres
+        , elab-util
+
+-- main file (i.e. file to load at REPL)
+main = Main
+
+-- name of executable
+executable = "db-test"
+sourcedir = "src"
