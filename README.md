@@ -381,3 +381,18 @@ database.
 It runs the repository/query/derivation/transaction suite directly against
 that database - fresh-install/replay/upgrade/drift/rollback migration
 checks, the active-record derivations, and `withTransactionRepos`.
+
+Two standalone Python checks complement it:
+
+```sh
+python3 -m unittest discover -s test -p legacy_metadata_guard_test.py
+PG_TEST_HOST=... PG_TEST_PORT=... PG_TEST_USER=... PG_TEST_PASSWORD=... PG_TEST_DB=... \
+  python3 test/runtime_integration_test.py
+```
+
+`legacy_metadata_guard_test.py` is a static source check (no database, no
+build needed) confirming `DB.Migration`'s `nebula_meta` detection stays a
+fail-closed guard, not a fallback - see "Explicit SQL migrations" above and
+MIGRATION.md. `runtime_integration_test.py` runs the already-built
+`db-test` executable under an external 180s deadline, using the same
+`PG_TEST_*` environment as above.
